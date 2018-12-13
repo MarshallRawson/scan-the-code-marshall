@@ -91,3 +91,25 @@ target_link_libraries(shape_identification
   ${OpenCV_LIBS}
 )
 
+add_library(Eigen 
+  nodes/Eigen
+)
+
+SET_TARGET_PROPERTIES(Eigen
+ PROPERTIES LINKER_LANGUAGE C
+)
+
+add_executable(scan_the_code_marshall
+  nodes/scan_the_code_marshall.cpp
+)
+
+add_dependencies(scan_the_code_marshall
+  ${catkin_EXPORTED_TARGETS}
+)
+target_link_libraries(scan_the_code_marshall
+  Eigen
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+)
+
+
